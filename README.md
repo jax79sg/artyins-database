@@ -1,4 +1,4 @@
-[![Database](https://github.com/jax79sg/artyins-classifierservice/raw/master/images/SoftwareArchitectureDatabase.jpg)]()
+[![Database](https://github.com/jax79sg/artyins-database/raw/master/images/SoftwareArchitectureDatabase.jpg)]()
 
 # Database For artyins deployment architecture
 This is a submodule for the artyins architecture. Please refer to [main module](https://github.com/jax79sg/artyins) for full build details.
@@ -21,7 +21,7 @@ Refer to [Trello Task list](https://trello.com/c/gMsgraQm) for running tasks.
 The database schema is designed as follows. The reports table refers to the reports in their raw form. After ingestion, details are stored in the ingests table. Relevant statistics can be drawn from these 2 tables for analysis.
 ```sql
 ```
-[![Database](https://github.com/jax79sg/artyins-classifierservice/raw/master/images/SoftwareArchitectureDatabase.jpg)]()
+[![Database](https://github.com/jax79sg/artyins-database/raw/master/images/Reports.png)]()
 
 ## Setup
 ### MySQL server
