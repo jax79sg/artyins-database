@@ -5,9 +5,6 @@ class TestConnections(unittest.TestCase):
     def setUp(self):
         print("Waiting for mySQL to finish booting")
         time.sleep(15)
-        
-    def test_connectdb(self):
-        print("Running ConnectDB test")
         import mysql.connector as mysql
         db = mysql.connect(
            host = "127.0.0.1",
@@ -15,17 +12,14 @@ class TestConnections(unittest.TestCase):
            user = "user",
            passwd = "password"
         )
+        
+        
+    def test_connectdb(self):
+        print("Running ConnectDB test")
         print(db)
 
     def test_readdata(self):
         print("Running Read Data")
-        import mysql.connector as mysql
-        db = mysql.connect(
-           host = "127.0.0.1",
-           database = "reportdb",
-           user = "user",
-           passwd = "password"
-        )
         print("Checking reports table")
         cursor = db.cursor()
         cursor.execute("select * from reports")
@@ -38,13 +32,6 @@ class TestConnections(unittest.TestCase):
 
     def test_writedata(self):
         print("Running Write Data")
-        import mysql.connector as mysql
-        db = mysql.connect(
-           host = "127.0.0.1",
-           database = "reportdb",
-           user = "user",
-           passwd = "password"
-        )
         cursor = db.cursor()
         cursor.execute("INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES (%s, %s, %s, %s)",("abc.pdf","2020-01-06 15:55:55","2020-01-06 16:33:33","/mnt/raw/reports/"))
         db.commit()
