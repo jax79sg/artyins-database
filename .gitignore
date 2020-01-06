@@ -10,7 +10,7 @@ ehthumbs.db
 Thumbs.db
 @turtledb
 *.pyc
-
+mysql-data
 # Virtual envs #
 ################
 venv
