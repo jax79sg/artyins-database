@@ -30,7 +30,7 @@ CREATE TABLE `reports` (
 );
 
 CREATE TABLE `ingests` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `text` varchar(255),
   `section` varchar(255),
   `created_at` timestamp,
