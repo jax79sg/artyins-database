@@ -13,7 +13,6 @@ Refer to [Trello Task list](https://trello.com/c/gMsgraQm) for running tasks.
 
 - [Schema](#Schema)
 - [Setup](#Setup)
-- [Virtualenv](#Virtualenv)
 - [Tests](#Tests)
 
 ---
