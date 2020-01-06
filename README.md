@@ -51,7 +51,30 @@ docker pull quay.io/jax79sg/artyins-database
 ```
 
 Alternatively, you may build your docker image with the following Dockerfile, which include creating the database and loading the schema with test data.
-```docker
+```yml
+
+version: '2.1'
+services:
+
+  mysqldb:
+    image: mysql
+    restart: always
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-init-files:/docker-entrypoint-initdb.d  #init.sql in this folder will be executed once
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: reportdb
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 3
 ```
 ---
 
