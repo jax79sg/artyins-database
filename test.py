@@ -33,10 +33,10 @@ class TestConnections(unittest.TestCase):
     def test_writedata(self):
         print("Running Write Data")
         cursor = self.db.cursor()
-        cursor.execute("INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES (%s, %s, %s, %s)",("abc.pdf","2020-01-06 15:55:55","2020-01-06 16:33:33","/mnt/raw/reports/"))
+        cursor.execute("INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES (%s, %s, %s, %s)",("abc.pdf","20200106155555","20200106163333","/mnt/raw/reports/"))
         self.db.commit()
         assert cursor.rowcount>=1,"There should be one report inserted"
-        cursor.execute("INSERT INTO ingests (text,section,created_at,ingest_id,predicted_category,annotated_category) VALUES (%s, %s, %s, %s,%s,%s)",("This is the weather for singapore","observation","2020-01-06 15:55:55","1","DOCTRINE","DOCTRINE")) 
+        cursor.execute("INSERT INTO ingests (text,section,created_at,ingest_id,predicted_category,annotated_category) VALUES (%s, %s, %s, %s,%s,%s)",("This is the weather for singapore","observation","20200106155555","1","DOCTRINE","DOCTRINE")) 
         cursor.close()
 
 if __name__ == '__main__':

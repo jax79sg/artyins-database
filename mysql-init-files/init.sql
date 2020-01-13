@@ -19,6 +19,7 @@ CREATE TABLE `ingests` (
 
 ALTER TABLE `ingests` ADD FOREIGN KEY (`ingest_id`) REFERENCES `reports` (`id`);
 
-INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES ("hello.pdf","2019-12-31 12:12:12","2019-12-31 12:13:12","/home/user/reports/raw/");
-INSERT INTO ingests (text, section, created_at, ingest_id, predicted_category, annotated_category) VALUES ('Hellow hellow','observation','2020-01-21 12:13:13',1,'PERSONNEL','PERSONNEL');
+INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES ("hello.pdf","20191231121212","20191231121312","/home/user/reports/raw/");
+INSERT INTO ingests (text, section, created_at, ingest_id, predicted_category, annotated_category) VALUES ('Hellow hellow','observation','20200121121313',1,'PERSONNEL','PERSONNEL');
 
+commit;
