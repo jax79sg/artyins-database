@@ -12,14 +12,14 @@ CREATE TABLE `ingests` (
   `text` varchar(255),
   `section` varchar(255),
   `created_at` varchar(14),
-  `ingest_id` int,
+  `ingest_id` varchar(1000),
   `predicted_category` varchar(255),
   `annotated_category` varchar(255)
 );
 
-ALTER TABLE `ingests` ADD FOREIGN KEY (`ingest_id`) REFERENCES `reports` (`id`);
+ALTER TABLE `ingests` ADD FOREIGN KEY (`ingest_id`) REFERENCES `reports` (`filename`);
 
 INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES ("hello.pdf","20191231121212","20191231121312","/home/user/reports/raw/");
-INSERT INTO ingests (text, section, created_at, ingest_id, predicted_category, annotated_category) VALUES ('Hellow hellow','observation','20200121121313',1,'PERSONNEL','PERSONNEL');
+INSERT INTO ingests (text, section, created_at, ingest_id, predicted_category, annotated_category) VALUES ('Hellow hellow','observation','20200121121313','hello.pdf','PERSONNEL','PERSONNEL');
 
 commit;
