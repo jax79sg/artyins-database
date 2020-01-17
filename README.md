@@ -1,5 +1,3 @@
-[![Database](https://github.com/jax79sg/artyins-database/raw/master/images/SoftwareArchitectureDatabase.jpg)]()
-
 # Database For artyins deployment architecture
 This is a submodule for the artyins architecture. Please refer to [main module](https://github.com/jax79sg/artyins) for full build details.
 
