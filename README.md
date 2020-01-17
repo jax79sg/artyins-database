@@ -16,7 +16,32 @@ Refer to [Trello Task list](https://trello.com/c/gMsgraQm) for running tasks.
 ---
 ## Schema
 The database schema is designed as follows. The reports table refers to the reports in their raw form. After ingestion, details are stored in the ingests table. Relevant statistics can be drawn from these 2 tables for analysis.
-[![Database](https://github.com/jax79sg/artyins-database/raw/master/images/Reports.png)]()
+```sql
+CREATE TABLE `reports` (
+  #`id` int PRIMARY KEY AUTO_INCREMENT,
+  `filename` varchar(255) PRIMARY KEY,
+  `created_at` varchar(14),
+  `ingested_at` varchar(14),
+  `currentloc` varchar(255)
+);
+
+CREATE TABLE `ingests` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `text` text,
+  `section` varchar(255),
+  `created_at` varchar(14),
+  `ingest_id` varchar(1000),
+  `predicted_category` varchar(255),
+  `annotated_category` varchar(255)
+);
+
+ALTER TABLE `ingests` ADD FOREIGN KEY (`ingest_id`) REFERENCES `reports` (`filename`);
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'%' identified by 'password';
+INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES ("hello.pdf","20191231121212","20191231121312","/home/user/reports/raw/");
+INSERT INTO ingests (text, section, created_at, ingest_id, predicted_category, annotated_category) VALUES ('Hellow hellow','observation','20200121121313','hello.pdf','PERSONNEL','PERSONNEL');
+
+commit;
+```
 
 ## Setup
 ### MySQL server
@@ -45,32 +70,6 @@ services:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 5s
       retries: 3
-```
-init.sql
-```sql
-CREATE TABLE `reports` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `filename` varchar(255),
-  `created_at` timestamp,
-  `ingested_at` timestamp,
-  `currentloc` varchar(255)
-);
-
-CREATE TABLE `ingests` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `text` varchar(255),
-  `section` varchar(255),
-  `created_at` timestamp,
-  `ingest_id` int,
-  `predicted_category` varchar(255),
-  `annotated_category` varchar(255)
-);
-
-ALTER TABLE `ingests` ADD FOREIGN KEY (`ingest_id`) REFERENCES `reports` (`id`);
-
-INSERT INTO reports (filename,created_at,ingested_at,currentloc) VALUES ("hello.pdf","2019-12-31 12:12:12","2019-12-31 12:13:12","/home/user/reports/raw/");
-INSERT INTO ingests (text, section, created_at, ingest_id, predicted_category, annotated_category) VALUES ('Hellow hellow','observation','2020-01-21 12:13:13',1,'PERSONNEL','PERSONNEL');
-
 ```
 ---
 
