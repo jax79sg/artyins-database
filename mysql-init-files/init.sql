@@ -1,7 +1,7 @@
 
 CREATE TABLE `reports` (
   #`id` int PRIMARY KEY AUTO_INCREMENT,
-  `filename` varchar(255) PRIMARY KEY,
+  `filename` varchar(255),
   `created_at` varchar(14),
   `ingested_at` varchar(14),
   `currentloc` varchar(255)
